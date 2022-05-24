@@ -20,7 +20,7 @@ jobs:
 
       - name: Build with dotnet
         run: |
-            cd ./pcso-linfred-frontend
+            cd .\pcso-linfred-frontend
             dotnet build --configuration Release
             dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
