@@ -41,6 +41,9 @@ else
 <button class="btn btn-primary" @onclick="AddToDo">Add To Do</button>
 <button class="btn btn-primary" @onclick="InvokeJavaScript">Invoke JavaScript</button>
 <button class="btn btn-primary" @onclick="DeleteAll">Delete All</button>
+
+<MudButton Variant="Variant.Filled" Color="Color.Primary">Primary</MudButton>
+
 @code {
     private int count = 0;
     private string jsonData;
@@ -48,6 +51,7 @@ else
 
     private string name;
     private string message;
+    private DateTime dateCreated = DateTime.Now;
 
     private async void DeleteAll()
     {
@@ -66,7 +70,8 @@ else
         ToDoItem todoItemPost = new ToDoItem
             {
                 message = message,
-                name = name
+                name = name,
+                created = dateCreated
             };
         string myContent = JsonSerializer.Serialize(todoItemPost);
         byte[] buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
@@ -92,8 +97,9 @@ else
 
     private async void InvokeJavaScript()
     {
-        await JS.InvokeVoidAsync("DeleteCache");
+        //await JS.InvokeVoidAsync("DeleteCache");
         await JS.InvokeVoidAsync("HelloAlert");
+         await JS.InvokeVoidAsync("DeleteCache");
     }
 
     public class ToDoItem
@@ -102,6 +108,6 @@ else
         public string name { get; set; }
         public bool isComplete { get; set; }
         public string message { get; set; }
-        public DateTime created { get; set; } = DateTime.Now;
+        public DateTime created { get; set; }
     }
 }
