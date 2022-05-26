@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pcso-linfred-frontend", "pcso-linfred-frontend.csproj", "{C3F2D25E-850C-4734-A3C8-47571E22EAB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pcso-linfred-frontend", "pcso-linfred-frontend.csproj", "{C3F2D25E-850C-4734-A3C8-47571E22EAB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
