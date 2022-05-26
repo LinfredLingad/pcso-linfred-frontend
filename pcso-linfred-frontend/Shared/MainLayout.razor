@@ -10,12 +10,16 @@
         My Application
     </MudAppBar>
     <MudDrawer @bind-Open="@_drawerOpen">
-        
-        <NavMenu/>
+
+        <NavMenu />
 
     </MudDrawer>
     <MudMainContent>
-        @Body
+
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-2 pt-4">
+            @Body
+        </MudContainer>
+
     </MudMainContent>
 </MudLayout>
 

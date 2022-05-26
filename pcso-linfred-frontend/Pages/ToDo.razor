@@ -8,33 +8,21 @@
 <!--h3>@jsonData</h3-->
 
 
-@if (todoList == null)
+@if (todoList != null)
 {
-    <p><em>Loading...</em></p>
+    @foreach (var todo in todoList)
+    {
+        <MudCard>
+            <MudCardMedia Image="images/lee.jpg" Height="300"/>
+            <MudCardContent>
+                <MudText Typo="Typo.h5" Color="Color.Primary">@todo.name</MudText>
+                <MudText Typo="Typo.body1">@todo.message</MudText>
+                <MudText Typo="Typo.body2">@todo.created</MudText>  
+            </MudCardContent>
+        </MudCard>
+        <br />
+    }
 }
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Message</th>
-                <th>Created</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var todo in todoList)
-            {
-                <tr>
-                    <td>@todo.name</td>
-                    <td>@todo.message</td>
-                    <td>@todo.created</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-
 <MudTextField @bind-Value="name" Label="Name" Variant="Variant.Outlined"></MudTextField>
 <MudTextField @bind-Value="message" Label="Message" Variant="Variant.Outlined"></MudTextField>
 
@@ -62,6 +50,12 @@ else
 
     private string name;
     private string message;
+
+     protected async override Task OnInitializedAsync()
+    {
+        await GetListAsync();
+        base.OnInitializedAsync();
+    }
 
     private async void DeleteAll()
     {
